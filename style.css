@@ -1,10 +1,16 @@
+/* --- Premium Theme Variables --- */
 :root {
-    --primary-blue: #0032a0;
-    --dark-navy: #1a253f;
-    --accent-teal: #00b4d8;
-    --bg-light: #f4f6f9;
-    --text-color: #333333;
+    --primary-blue: #0A2463;
+    --accent-teal: #00E5FF;
+    --accent-purple: #7C43BD;
+    --text-main: #1a1a1a;
+    --text-light: #555555;
     --white: #ffffff;
+    
+    /* Glassmorphism settings */
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -15,9 +21,13 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    background-color: var(--bg-light);
-    color: var(--text-color);
+    /* Beautiful fixed background image of a modern transit station */
+    background: linear-gradient(rgba(10, 36, 99, 0.7), rgba(10, 36, 99, 0.8)), 
+                url('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&q=80&w=2000') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-main);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 .container {
@@ -26,12 +36,16 @@ body {
     margin: 0 auto;
 }
 
-/* --- Header & Hero --- */
+/* --- Frosted Glass Header --- */
 .main-header {
-    background-color: var(--dark-navy);
-    color: var(--white);
-    padding: 20px 0;
-    border-bottom: 4px solid var(--accent-teal);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header-flex {
@@ -42,116 +56,146 @@ body {
 
 .logo h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 800;
+    color: var(--primary-blue);
+    letter-spacing: -1px;
 }
 
 .logo h1 span {
-    color: var(--accent-teal);
+    background: linear-gradient(45deg, var(--accent-purple), #00b4d8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .tagline {
-    font-size: 14px;
-    opacity: 0.8;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-blue);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
+/* --- Hero Section --- */
 .hero {
     text-align: center;
-    padding: 40px 0 20px;
+    padding: 60px 0 40px;
+    color: var(--white);
 }
 
 .hero h2 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--dark-navy);
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* --- Search Container Styling --- */
-.search-container {
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
     max-width: 600px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto;
+}
+
+/* --- Search Bar Upgrade --- */
+.search-container {
+    max-width: 650px;
+    margin: 0 auto 35px auto;
 }
 
 #transitSearch {
     width: 100%;
-    padding: 14px 20px;
+    padding: 18px 25px;
     font-size: 16px;
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
-    border: 2px solid #ddd;
-    border-radius: 50px; /* Smooth rounded search pill */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    border-radius: 50px;
+    box-shadow: var(--glass-shadow);
     outline: none;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease;
 }
 
 #transitSearch:focus {
     border-color: var(--accent-teal);
-    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    background: var(--white);
 }
 
-/* Extra badge colors for the newly added lines */
-.line-badge.ampang { background-color: #e63946; }
-/* --- Interactive Navigation Tabs --- */
+/* --- Glowing Interactive Tabs --- */
 .tabs-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 25px;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .tab-btn {
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
-    padding: 12px 25px;
-    border: none;
-    background-color: var(--white);
-    color: var(--dark-navy);
-    border-radius: 30px;
+    padding: 14px 30px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .tab-btn:hover {
-    background-color: #e9ecef;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
 }
 
 .tab-btn.active {
-    background-color: var(--primary-blue);
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
     color: var(--white);
-    box-shadow: 0 4px 10px rgba(0, 50, 160, 0.3);
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
-/* --- Content Content Areas --- */
+/* --- Frosted Glass Schedule Box --- */
 .schedule-box {
-    background-color: var(--white);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: var(--glass-shadow);
 }
 
 .tab-content {
     display: none;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .tab-content.active {
     display: block;
 }
 
-.tab-content h3 {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 20px;
-    color: var(--dark-navy);
-    border-left: 4px solid var(--accent-teal);
-    padding-left: 10px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Simple, Streamlined Tables --- */
+.tab-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+    color: var(--primary-blue);
+    font-size: 22px;
+    border-left: 5px solid var(--accent-teal);
+    padding-left: 15px;
+}
+
+/* --- Modern Tables --- */
 .table-responsive {
     overflow-x: auto;
 }
@@ -163,48 +207,54 @@ table {
 }
 
 th, td {
-    padding: 15px;
-    border-bottom: 1px solid #eef2f5;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 th {
-    background-color: #f8fafc;
-    color: #64748b;
+    color: var(--text-light);
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 td {
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 tr:hover td {
-    background-color: #fdfdfd;
+    background-color: rgba(0, 229, 255, 0.05);
 }
 
-/* Live indicators */
+/* Live time glow effect */
 .live-time {
-    color: #2ec4b6;
-    font-weight: 700;
+    color: #00c853;
+    font-weight: 800;
+    text-shadow: 0 0 8px rgba(0, 200, 83, 0.3);
 }
 
-/* Sub-badges for LRT styling */
+/* Vibrant Transit Badges */
 .line-badge {
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
     color: white;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.line-badge.kelana { background-color: #ef233c; }
-.line-badge.kajang { background-color: #ffb703; }
+.line-badge.kelana { background: linear-gradient(45deg, #ef233c, #d90429); }
+.line-badge.kajang { background: linear-gradient(45deg, #ffb703, #fb8500); }
+.line-badge.ampang { background: linear-gradient(45deg, #e63946, #a8dadc); color: #1d3557;}
 
 /* --- Footer --- */
 .site-footer {
     text-align: center;
-    padding: 30px 0;
-    color: #888;
+    padding: 40px 0;
+    color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
-    margin-top: 40px;
+    margin-top: 50px;
 }
