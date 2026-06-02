@@ -69,6 +69,32 @@ body {
     margin-bottom: 10px;
 }
 
+/* --- Search Container Styling --- */
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+#transitSearch {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    border: 2px solid #ddd;
+    border-radius: 50px; /* Smooth rounded search pill */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+#transitSearch:focus {
+    border-color: var(--accent-teal);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+}
+
+/* Extra badge colors for the newly added lines */
+.line-badge.ampang { background-color: #e63946; }
 /* --- Interactive Navigation Tabs --- */
 .tabs-container {
     display: flex;
