@@ -6,10 +6,26 @@
     <title>Smart Transport Malaysia - Schedules & Fares</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Adds spacing between the stacked tables */
+        .transit-section {
+            margin-bottom: 40px;
+        }
+        .transit-section:last-child {
+            margin-bottom: 0;
+        }
+        .transit-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            font-size: 22px;
+            border-left: 5px solid var(--accent-teal);
+            padding-left: 15px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Shared Navigation Header -->
     <header class="main-header">
         <div class="container header-flex">
             <div class="logo">
@@ -25,35 +41,23 @@
         </div>
     </header>
 
-    <!-- Page Intro Area -->
     <section class="hero">
         <div class="container">
             <h2>Transit Timetables & Fare Structures</h2>
-            <p>Filter active routes instantly. Switch between transport modes to view live wait times, frequencies, and complete ticketing pricing.</p>
+            <p>Filter active routes instantly. Scroll down to view live wait times, frequencies, and complete ticket pricing for all transport modes.</p>
         </div>
     </section>
 
-    <!-- Main Schedule Interface -->
     <main class="container main-content">
         
-        <!-- Live Instant Filtering Box -->
         <div class="search-container">
             <input type="text" id="transitSearch" onkeyup="filterSchedules()" placeholder="🔍 Search route, station, or code... (e.g., KLCC, Penang, 101, Gold)">
         </div>
 
-        <!-- Mode Toggle Navigation -->
-        <div class="tabs-container">
-            <button class="tab-btn active" id="btn-bus" onclick="switchTab('bus')">🚌 Bus Routes</button>
-            <button class="tab-btn" id="btn-lrt" onclick="switchTab('lrt')">🚇 LRT / MRT Metro</button>
-            <button class="tab-btn" id="btn-ets" onclick="switchTab('ets')">🚄 ETS / KTM Intercity</button>
-        </div>
-
-        <!-- Glassmorphic Schedule Display Panel -->
         <div class="schedule-box">
             
-            <!-- 1. BUS TAB CONTENT -->
-            <div id="bus" class="tab-content active">
-                <h3>Bus Transport Networks</h3>
+            <div class="transit-section">
+                <h3>🚌 Bus Transport Networks</h3>
                 <div class="table-responsive">
                     <table>
                         <thead>
@@ -99,9 +103,8 @@
                 </div>
             </div>
 
-            <!-- 2. LRT/MRT TAB CONTENT -->
-            <div id="lrt" class="tab-content">
-                <h3>Klang Valley Rapid Rail Systems</h3>
+            <div class="transit-section">
+                <h3>🚇 Klang Valley Rapid Rail Systems</h3>
                 <div class="table-responsive">
                     <table>
                         <thead>
@@ -140,9 +143,8 @@
                 </div>
             </div>
 
-            <!-- 3. ETS/KTM TAB CONTENT -->
-            <div id="ets" class="tab-content">
-                <h3>Keretapi Tanah Melayu (KTM) Services</h3>
+            <div class="transit-section">
+                <h3>🚄 Keretapi Tanah Melayu (KTM) Services</h3>
                 <div class="table-responsive">
                     <table>
                         <thead>
@@ -184,39 +186,22 @@
         </div>
     </main>
 
-    <!-- Global Standardized Footer -->
     <footer class="site-footer">
         <p>&copy; 2026 Smart Transport Malaysia. Created for Academic Assessment.</p>
     </footer>
 
-    <!-- Tab Control & Filter Processing Engine -->
     <script>
-        // Smoothly transitions active viewing states between tabs
-        function switchTab(modeId) {
-            // Uncheck active styling triggers on all tab controls
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            // Apply highlighting context onto target selection
-            event.currentTarget.classList.add('active');
-            document.getElementById(modeId).classList.add('active');
-            
-            // Keep filter queries persistent across tab switches
-            filterSchedules();
-        }
-
-        // Monitors text inputs and dynamically manipulates row visibilities
+        // Monitors text inputs and dynamically manipulates row visibilities across ALL tables
         function filterSchedules() {
             let input = document.getElementById("transitSearch");
             let filter = input.value.toLowerCase();
             
-            // Limit computational targeting to current active viewport pane
-            let activeTab = document.querySelector(".tab-content.active");
-            let rows = activeTab.querySelectorAll(".searchable-tbody tr");
+            // Grabs every single row in all three tables
+            let allRows = document.querySelectorAll(".searchable-tbody tr");
 
-            rows.forEach(row => {
+            allRows.forEach(row => {
                 let text = row.innerText.toLowerCase();
-                // Toggle element display properties based on filter matches
+                // Show or hide based on the search
                 if (text.includes(filter)) {
                     row.style.display = "";
                 } else {
