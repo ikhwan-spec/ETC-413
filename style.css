@@ -48,8 +48,8 @@ body {
 
 .header-flex {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* This pushes Logo left and Nav right */
+    align-items: center;            /* This centers them vertically */
 }
 
 .logo h1 {
