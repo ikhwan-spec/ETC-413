@@ -181,7 +181,7 @@ body {
 }
 
 .brand-logo {
-    height: 40px; /* Adjust this number if your logo is too big or small */
+    height: 70px; /* Adjust this number if your logo is too big or small */
     width: auto;
     border-radius: 8px; 
 }
