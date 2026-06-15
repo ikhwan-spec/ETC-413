@@ -170,3 +170,52 @@ body {
     font-size: 13px;
     margin-top: auto;
 }
+
+/* --- Logo & Multimedia Styling --- */
+
+/* Aligns the logo image with the text perfectly */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo {
+    height: 40px; /* Adjust this number if your logo is too big or small */
+    width: auto;
+    border-radius: 8px; 
+}
+
+/* Grid layout for the video and poster */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Glassmorphic card for media */
+.media-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: var(--glass-shadow);
+}
+
+.media-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--glass-border);
+    padding-bottom: 10px;
+}
+
+/* Makes sure the video and image never break out of their boxes */
+.media-card video, .promo-poster {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: block;
+}
