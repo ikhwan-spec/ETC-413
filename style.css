@@ -178,12 +178,17 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    height: 100%; /* Ensures the block matches the container height */
 }
 
 .brand-logo {
-    height: 100px; /* Adjust this number if your logo is too big or small */
+    /* Scale this down so it doesn't break your navbar layout */
+    height: 40px; 
+    
     width: auto;
-    border-radius: 8px; 
+    object-fit: contain; /* Forces the image aspect ratio to stay locked */
+    border-radius: 4px;  /* Slight corner rounding to fit your UI theme */
+    display: block;
 }
 
 /* Grid layout for the video and poster */
